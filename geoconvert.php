@@ -73,4 +73,6 @@ class geoconvert {
         $this->gps_bogen['y']['minute'] = $this->gps_bogen_sek['y']['minute'] + ($this->gps_bogen_sek['y']['sekunde']/60);
     }
 
+    public 
+
 }
