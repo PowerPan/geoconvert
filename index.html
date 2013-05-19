@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script language="javascript">
+
+    function test(){
+        var lat = document.getElementById('lat').value;
+        var lng = document.getElementById('lng').value;
+        $.post('ajax.php?func=test',{ lat: lat,lng: lng},function(data) {
+            alert(data);
+
+        });
+    }
+
+</script>
+<body>
+Testen der Geoconvert Klasse
+<br/>
+<br/>
+LAT: <input type="text" id="lat"/>
+<br/>
+LNG: <input type="text" id="lng"/>
+<button onclick="test()">TEST</button>
+</body>
+</html>
