@@ -16,6 +16,7 @@ class geoconvert {
     private $utmref;
 
     private $a = 6378137; //WGS84
+    private $e2 = 0.00669437999013;
 
     // N/S = Y-Achse
     // O/W = X-Achse
@@ -25,7 +26,7 @@ class geoconvert {
         $this->gps_dezi['y'] = $lng;
         $this->gps_dezi2bogen();
         $this->gps_bogen2bogen_sek();
-        $this->utm_zone();
+        $this->gps_dezi2utm();
 
         $this->gps_bogen_sek2bogen();
         $this->gps_bogen2dezi();
@@ -137,14 +138,36 @@ class geoconvert {
     private function gps_dezi2utm(){
         //http://www.mydarc.de/dh2mic/files/utm.pdf
 
-        $lat_rad = DegToRad($this->gps_dezi['x']);
-        $lng_rad = DegToRad($this->gps_dezi['y']);
+        //Berechung von UTM Zone und Berzugsmeridian
+        $this->utm_zone();
+        $this->utm_bezugsmeridian();
 
         $ko = 0.9996;
-        $E = pow(M_E,2)/(1-pow(M_E,2));
-        $N = $this->a / pow(1-pow(M_E,2)*pow(sin($lat_rad),2),0.5);
-        $T = pow(tan($lat_rad),2);
-        $C = $E * pow(tan($lat_rad),2);
+        $E = pow($this->e2,2)/(1-pow($this->e2,2));
+        $N = $this->a / pow(1-pow($this->e2,2)*pow(sin($this->gps_dezi['y']),2),0.5);
+        $T = pow(tan($this->gps_dezi['y']),2);
+        $C = $E * pow(tan($this->gps_dezi['y']),2);
+        $A = $this->DegToRad(($this->gps_dezi['x']-$this->utm['bezugsmeridian'])) * cos($this->gps_dezi['y']);
+
+        // Die Reihe hab ich noch nicht durchblickt und daher stumpf abgechrieben JJR 19.05.2013
+        $M = $this->a * (   ((1- (pow($this->e2,2)/4) - 3*(pow($this->e2,4)/64) - 5*(pow($this->e2,6)/256))*$this->gps_dezi['y'])
+                            -( (3*(pow($this->e2,2)/8) + 3*(pow($this->e2,4)/32) + 45*(pow($this->e2,6)/1024))*sin(2*$this->gps_dezi['y']))
+                            +( (15*(pow($this->e2,4)/256) + 45*(pow($this->e2,6)/1024))*sin(4*$this->gps_dezi['y']) )
+                            -( (35*(pow($this->e2,6)/3072))*sin(6*$this->gps_dezi['x']))
+            );
+
+        $G1 = 13 * pow($C,2) + 4 * pow($C,3) - 64 * pow($C,2)*$T - 24 * pow($C,3) * $T;
+        $G2 = (61 - 479 * $T + 179 * pow($T,2) - pow($T,3))*pow($A,7)/5040;
+        $G3 = 445 * pow($C,2) + 324 * pow($C,3) - 680 * pow($C,2) * $T + 88 * pow($C,4) - 600 * pow($C,3) * $T - 192 * pow($C,4) * $T;
+        $G4 = (1385 - 3111 * $T + 543 * pow($T,2) - pow($T,3) ) * pow($A,8) / 40320;
+
+
+        $this->utm['x'] = $ko * $N * ( $A + (1 - $T + $C) * pow($A,3)/6 + (5 - 18 * $T + pow($T,2) + 72 * $C - 58 * $E + $G1 ) * pow($A,5)/120 + $G2 );
+        $this->utm['y'] = $ko * ( $M + $N * tan($this->DegToRad($this->gps_dezi['y'])) * ( pow($A,2)/2 + ( 5 - $T + 9 * $C + 4 * pow($C,2)) * pow($A,4)/24 + ( 61 - 58 * $T + pow($T,2) + 600 * $C - 330 * $E + $G3 ) * pow($A,6)/720  )  + $G4   );
+    }
+
+    private function utm_bezugsmeridian(){
+        $this->utm['bezugsmeridian'] = (-183.0 + ($this->utm['zone'] * 6.0));
     }
 
     private function DegToRad($deg){

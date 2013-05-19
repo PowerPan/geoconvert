@@ -5,7 +5,7 @@
     <ignored path="geoconvert.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368963509644" ignored="false" />
-    <file path="/geoconvert.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368967866299" ignored="false" />
+    <file path="/geoconvert.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368985663356" ignored="false" />
     <file path="/index.html" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368964298596" ignored="false" />
     <file path="/ajax.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368966913188" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,7 +30,7 @@
       <file leaf-file-name="geoconvert.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/geoconvert.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="39" selection-start="4713" selection-end="4713" vertical-scroll-proportion="0.7">
+            <state line="165" column="241" selection-start="6304" selection-end="6304" vertical-scroll-proportion="0.48863637">
               <folding>
                 <element signature="e#6#163#0" expanded="true" />
               </folding>
@@ -50,16 +50,7 @@
       <file leaf-file-name="ajax.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="1" selection-start="567" selection-end="567" vertical-scroll-proportion="-11.25">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../xamppfiles/htdocs/swwv/karte/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="227" column="86" selection-start="9927" selection-end="10005" vertical-scroll-proportion="-23.75">
+            <state line="16" column="20" selection-start="517" selection-end="517" vertical-scroll-proportion="-10.0">
               <folding />
             </state>
           </provider>
@@ -68,7 +59,7 @@
       <file leaf-file-name="sourceidea" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sourceidea">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="130" column="5" selection-start="2870" selection-end="2870" vertical-scroll-proportion="-13.269231">
+            <state line="127" column="24" selection-start="2778" selection-end="2796" vertical-scroll-proportion="64.5">
               <folding />
             </state>
           </provider>
@@ -109,8 +100,8 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1920" />
-    <option name="height" value="1054" />
+    <option name="width" value="1280" />
+    <option name="height" value="774" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -222,13 +213,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1054" extended-state="6" />
+    <frame x="0" y="22" width="1280" height="774" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32905984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0121951215" sideWeight="0.99351704" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497332" sideWeight="0.67094016" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14181523" sideWeight="0.9878049" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1670224" sideWeight="0.67094016" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.67094016" order="2" side_tool="false" content_ui="tabs" />
@@ -328,30 +319,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="1" selection-start="567" selection-end="567" vertical-scroll-proportion="-11.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../xamppfiles/htdocs/swwv/karte/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="227" column="86" selection-start="9927" selection-end="10005" vertical-scroll-proportion="-23.75">
+        <state line="227" column="86" selection-start="9927" selection-end="10005" vertical-scroll-proportion="0.97770154">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sourceidea">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="5" selection-start="2870" selection-end="2870" vertical-scroll-proportion="-13.269231">
+        <state line="127" column="24" selection-start="2778" selection-end="2796" vertical-scroll-proportion="64.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="20" selection-start="517" selection-end="517" vertical-scroll-proportion="-10.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geoconvert.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="39" selection-start="4713" selection-end="4713" vertical-scroll-proportion="0.7">
+        <state line="165" column="241" selection-start="6304" selection-end="6304" vertical-scroll-proportion="0.48863637">
           <folding>
             <element signature="e#6#163#0" expanded="true" />
           </folding>
