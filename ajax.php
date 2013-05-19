@@ -9,11 +9,13 @@
 include_once("geoconvert.php");
 
 switch($_GET['func']){
-    case "test":    $geo = new geoconvert();
-                    $geo->set_gps_dezi($_POST['lat'],$_POST['lng']);
-                    print_r($geo->get_gps_dezi());
-                    //print_r($geo->get_gps_bogen());
-                    //print_r($geo->get_gps_bogen_sek());
-                    print_r($geo->get_utm());
-                    break;
+    case "set_dezi":    $geo = new geoconvert();
+                        $geo->set_gps_dezi($_POST['lat'],$_POST['lng']);
+                        $json = '{ "dezi": "'.$geo->get_gps_dezi().'"
+                                   ,"bogen":  "'.$geo->get_gps_bogen().'"
+                                   ,"bogen_sek":  "'.$geo->get_gps_bogen_sek().'"
+                                   ,"utm":  "'.$geo->get_utm().'"
+                                    }';
+                        echo $json;
+                        break;
 }

@@ -5,9 +5,9 @@
     <ignored path="geoconvert.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368963509644" ignored="false" />
-    <file path="/geoconvert.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368985663356" ignored="false" />
-    <file path="/index.html" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368964298596" ignored="false" />
-    <file path="/ajax.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368966913188" ignored="false" />
+    <file path="/geoconvert.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368987129836" ignored="false" />
+    <file path="/index.html" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368987290861" ignored="false" />
+    <file path="/ajax.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368986742213" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +27,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="geoconvert.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="geoconvert.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geoconvert.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="241" selection-start="6304" selection-end="6304" vertical-scroll-proportion="0.48863637">
+            <state line="47" column="71" selection-start="1435" selection-end="1435" vertical-scroll-proportion="-4.367089">
               <folding>
                 <element signature="e#6#163#0" expanded="true" />
               </folding>
@@ -38,10 +38,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="20" selection-start="193" selection-end="193" vertical-scroll-proportion="-5.0">
+            <state line="36" column="16" selection-start="1123" selection-end="1123" vertical-scroll-proportion="0.69500923">
               <folding />
             </state>
           </provider>
@@ -50,7 +50,7 @@
       <file leaf-file-name="ajax.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="20" selection-start="517" selection-end="517" vertical-scroll-proportion="-10.0">
+            <state line="15" column="47" selection-start="533" selection-end="533" vertical-scroll-proportion="-9.375">
               <folding />
             </state>
           </provider>
@@ -91,9 +91,9 @@
       <list>
         <option value="$PROJECT_DIR$/sourceidea" />
         <option value="$PROJECT_DIR$/../../xamppfiles/htdocs/swwv/karte/index.php" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/ajax.php" />
         <option value="$PROJECT_DIR$/geoconvert.php" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -312,13 +312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="20" selection-start="193" selection-end="193" vertical-scroll-proportion="-5.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../xamppfiles/htdocs/swwv/karte/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="227" column="86" selection-start="9927" selection-end="10005" vertical-scroll-proportion="0.97770154">
@@ -335,17 +328,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ajax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="20" selection-start="517" selection-end="517" vertical-scroll-proportion="-10.0">
+        <state line="15" column="47" selection-start="533" selection-end="533" vertical-scroll-proportion="-9.375">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/geoconvert.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="241" selection-start="6304" selection-end="6304" vertical-scroll-proportion="0.48863637">
+        <state line="47" column="71" selection-start="1435" selection-end="1435" vertical-scroll-proportion="-4.367089">
           <folding>
             <element signature="e#6#163#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="16" selection-start="1123" selection-end="1123" vertical-scroll-proportion="0.69500923">
+          <folding />
         </state>
       </provider>
     </entry>

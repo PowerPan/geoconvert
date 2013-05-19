@@ -33,19 +33,19 @@ class geoconvert {
     }
 
     public function get_gps_dezi(){
-        return $this->gps_dezi;
+        return $this->gps_dezi['x']." ".$this->gps_dezi['y'];
     }
 
     public function get_gps_bogen(){
-        return $this->gps_bogen;
+        return $this->gps_bogen['x']['grad']."° ".$this->gps_bogen['x']['minute']."' ".$this->gps_bogen['y']['grad']."° ".$this->gps_bogen['y']['minute']."' ";
     }
 
     public function get_gps_bogen_sek(){
-        return $this->gps_bogen_sek;
+        return $this->gps_bogen_sek['x']['grad']."° ".$this->gps_bogen_sek['x']['minute']."' ".$this->gps_bogen_sek['x']['sekunde']."'' ".$this->gps_bogen_sek['y']['grad']."° ".$this->gps_bogen_sek['y']['minute']."' ".$this->gps_bogen_sek['y']['sekunde']."'' ";
     }
 
     public function get_utm(){
-        return $this->utm;
+        return $this->utm['zone']." ".$this->utm['x']." ".$this->utm['y'];
     }
 
     private function gps_dezi2bogen(){

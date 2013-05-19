@@ -9,9 +9,12 @@
     function test(){
         var lat = document.getElementById('lat').value;
         var lng = document.getElementById('lng').value;
-        $.post('ajax.php?func=test',{ lat: lat,lng: lng},function(data) {
-            alert(data);
-
+        $.post('ajax.php?func=set_dezi',{ lat: lat,lng: lng},function(data) {
+            data = JSON.parse(data);
+            document.getElementById('result_dezi').innerHTML = data.dezi;
+            document.getElementById('result_bogen').innerHTML = data.bogen;
+            document.getElementById('result_bogen_sek').innerHTML = data.bogen_sek;
+            document.getElementById('result_utm').innerHTML = data.utm;
         });
     }
 
@@ -20,9 +23,22 @@
 Testen der Geoconvert Klasse
 <br/>
 <br/>
-LAT: <input type="text" id="lat"/>
+LAT: <input type="text" id="lat" value="2.68408"/>
 <br/>
-LNG: <input type="text" id="lng"/>
+LNG: <input type="text" id="lng" value="13.60657"/>
 <button onclick="test()">TEST</button>
+<hr/>
+<h5>dd.dddd</h5>
+<div id="result_dezi"></div>
+<h5>dd mm.mmm</h5>
+<div id="result_bogen"></div>
+<h5>dd mm ss.s</h5>
+<div id="result_bogen_sek"></div>
+<h5>UTM</h5>    
+<div id="result_utm"></div>
+<h5>UTMREF</h5>
+<div id="result_utmref"></div>
+<br>
 </body>
+
 </html>
