@@ -7,15 +7,39 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class UTM {
+class UTM extends GPS{
     private $zone;
     private $easting;
     private $northing;
+    private $bezugsmeridian;
 
-    private function utm_zone(){
+
+    private $a = 6378137; //WGS84
+    private $b = 6356752.3142;
+    
+
+    public function get_zone(){
+        return $this->zone;
+    }
+
+    public function get_easting(){
+        return $this->easting;
+    }
+
+    public function  get_northing(){
+        return $this->northing;
+    }
+
+    public function set_latlng_dezi($lat,$lng){
+        parent::set_latlng_dezi($lat,$lng);
+        $this->find_zone();
+        $this->calculate_from_dezi();
+    }
+
+    private function find_zone(){
         //http://www.anuva.de/service_arcforum.php?action=vthread&forum=3&topic=1559
-        $lat = intval(($this->gps_dezi['x']+80)/8)+1;
-        $lng = intval(($this->gps_dezi['y']+180)/6)+1;
+        $lat = intval(($this->lat_grad+80)/8)+1;
+        $lng = intval(($this->lng_grad+180)/6)+1;
 
         switch($lat){
             case 1: $zone = "C"; break;
@@ -40,42 +64,54 @@ class UTM {
             case 20: $zone = "X"; break;
             case 21: $zone = "X"; break;
         }
-        $this->utm['zone'] = $lng.$zone;
+        $this->zone = $lng.$zone;
     }
 
-    private function gps_dezi2utm(){
+    private function calculate_from_dezi(){
         //http://www.mydarc.de/dh2mic/files/utm.pdf
+        //http://www.gpsy.com/gpsinfo/geotoutm/gantz/LatLong-UTMconversion.cpp.txt
 
         //Berechung von UTM Zone und Berzugsmeridian
-        $this->utm_zone();
-        $this->utm_bezugsmeridian();
+        $this->find_zone();
+        $this->find_bezugsmeridian();
+        $lat_rad = $this->DegToRad($this->lat_grad);
 
-        $ko = 0.9996;
-        $E = pow($this->e2,2)/(1-pow($this->e2,2));
-        $N = $this->a / pow(1-pow($this->e2,2)*pow(sin($this->gps_dezi['y']),2),0.5);
-        $T = pow(tan($this->gps_dezi['y']),2);
-        $C = $E * pow(tan($this->gps_dezi['y']),2);
-        $A = $this->DegToRad(($this->gps_dezi['x']-$this->utm['bezugsmeridian'])) * cos($this->gps_dezi['y']);
+        $e2 = pow(sqrt(pow($this->a,2)-pow($this->b,2))/$this->b,2);
 
+        $k0 = 0.9996;
+        $E = pow($e2,2)/(1-pow($e2,2));
+        $N = $this->a / sqrt($e2*sin($lat_rad)*sin($lat_rad));
+        $T = pow(tan($lat_rad),2);
+        $C = $E * pow(cos($lat_rad),2);
+        $A = $this->DegToRad(($lat_rad-$this->DegToRad($this->bezugsmeridian))) * cos($lat_rad);
+
+        $M = $this->a*((1	- $e2/4		- 3*$e2*$e2/64	- 5*$e2*$e2*$e2/256)*$lat_rad
+            - (3*$e2/8	+ 3*$e2*$e2/32	+ 45*$e2*$e2*$e2/1024)*sin(2*$lat_rad)
+            + (15*$e2*$e2/256 + 45*$e2*$e2*$e2/1024)*sin(4*$lat_rad)
+            - (35*$e2*$e2*$e2/3072)*sin(6*$lat_rad));
+        
         // Die Reihe hab ich noch nicht durchblickt und daher stumpf abgechrieben JJR 19.05.2013
-        $M = $this->a * (   ((1- (pow($this->e2,2)/4) - 3*(pow($this->e2,4)/64) - 5*(pow($this->e2,6)/256))*$this->gps_dezi['y'])
-            -( (3*(pow($this->e2,2)/8) + 3*(pow($this->e2,4)/32) + 45*(pow($this->e2,6)/1024))*sin(2*$this->gps_dezi['y']))
-            +( (15*(pow($this->e2,4)/256) + 45*(pow($this->e2,6)/1024))*sin(4*$this->gps_dezi['y']) )
-            -( (35*(pow($this->e2,6)/3072))*sin(6*$this->gps_dezi['x']))
-        );
+        /*$M = $this->a * (   ((1- (pow($e2,1)/4) - 3*(pow($e2,2)/64) - 5*(pow($e2,3)/256))*$lat_rad
+            -( (3*(pow($e2,1)/8) + 3*(pow($e2,2)/32) + 45*(pow($e2,3)/1024))*sin(2*$lat_rad))
+            +( (15*(pow($e2,2)/256) + 45*(pow($e2,3)/1024))*sin(4*$lat_rad) )
+            -( (35*(pow($e2,3)/3072))*sin(6*$lat_rad))
+        ));*/
 
-        $G1 = 13 * pow($C,2) + 4 * pow($C,3) - 64 * pow($C,2)*$T - 24 * pow($C,3) * $T;
+        $this->easting = ($k0*$N*($A+(1-$T+$C)*$A*$A*$A/6 + (5-18*$T+$T*$T+72*$C-58*$E)*$A*$A*$A*$A*$A/120) + 500000.0);
+        $this->northing = ($k0*($M+$N*tan($lat_rad)*($A*$A/2+(5-$T+9*$C+4*$C*$C)*$A*$A*$A*$A/24 + (61-58*$T+$T*$T+600*$C-330*$E)*$A*$A*$A*$A*$A*$A/720)));
+
+        /*$G1 = 13 * pow($C,2) + 4 * pow($C,3) - 64 * pow($C,2)*$T - 24 * pow($C,3) * $T;
         $G2 = (61 - 479 * $T + 179 * pow($T,2) - pow($T,3))*pow($A,7)/5040;
         $G3 = 445 * pow($C,2) + 324 * pow($C,3) - 680 * pow($C,2) * $T + 88 * pow($C,4) - 600 * pow($C,3) * $T - 192 * pow($C,4) * $T;
-        $G4 = (1385 - 3111 * $T + 543 * pow($T,2) - pow($T,3) ) * pow($A,8) / 40320;
+        $G4 = (1385 - 3111 * $T + 543 * pow($T,2) - pow($T,3) ) * pow($A,8) / 40320;*/
 
 
-        $this->utm['x'] = $ko * $N * ( $A + (1 - $T + $C) * pow($A,3)/6 + (5 - 18 * $T + pow($T,2) + 72 * $C - 58 * $E + $G1 ) * pow($A,5)/120 + $G2 );
-        $this->utm['y'] = $ko * ( $M + $N * tan($this->DegToRad($this->gps_dezi['y'])) * ( pow($A,2)/2 + ( 5 - $T + 9 * $C + 4 * pow($C,2)) * pow($A,4)/24 + ( 61 - 58 * $T + pow($T,2) + 600 * $C - 330 * $E + $G3 ) * pow($A,6)/720  )  + $G4   );
+        //$this->easting = $ko * $N * ( $A + (1 - $T + $C) * pow($A,3)/6 + (5 - 18 * $T + pow($T,2) + 72 * $C - 58 * $E + $G1 ) * pow($A,5)/120 + $G2 );
+        //$this->northing = $ko * ( $M + $N * tan($this->DegToRad($this->gps_dezi['y'])) * ( pow($A,2)/2 + ( 5 - $T + 9 * $C + 4 * pow($C,2)) * pow($A,4)/24 + ( 61 - 58 * $T + pow($T,2) + 600 * $C - 330 * $E + $G3 ) * pow($A,6)/720  )  + $G4   );
     }
 
-    private function utm_bezugsmeridian(){
-        $this->utm['bezugsmeridian'] = (-183.0 + ($this->utm['zone'] * 6.0));
+    private function find_bezugsmeridian(){
+        $this->bezugsmeridian = (-183.0 + ($this->zone * 6.0));
     }
 
     private function DegToRad($deg){
