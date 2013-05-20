@@ -21,4 +21,18 @@ switch($_GET['func']){
 
                         echo $json;
                         break;
+
+    case "set_utm":     $geo = new geoconvert();
+                        $geo->set_utm($_POST['zone'],$_POST['utmx'],$_POST['utmy']);
+                        $json = '{ "dezi": "'.$geo->get_gps_dezi().'"
+                                                   ,"bogen":  "'.$geo->get_gps_bogen().'"
+                                                   ,"bogen_sek":  "'.$geo->get_gps_bogen_sek().'"
+                                                   ,"utm":  "'.$geo->get_utm().'"
+                                                   ,"utmref":  "'.$geo->get_utmref().'"
+                                                   ,"adresse": "'.$geo->get_adresse().'"
+                                                   }';
+
+                        echo $json;
+                        break;
+
 }

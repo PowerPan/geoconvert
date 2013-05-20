@@ -6,7 +6,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script language="javascript">
 
-    function test(){
+    function latlng(){
         var lat = document.getElementById('lat').value;
         var lng = document.getElementById('lng').value;
         $.post('ajax.php?func=set_dezi',{ lat: lat,lng: lng},function(data) {
@@ -20,15 +20,53 @@
         });
     }
 
+    function utm(){
+        var x = document.getElementById('utmx').value;
+        var y = document.getElementById('utmy').value;
+        var zone = document.getElementById('utmzone').value;
+        $.post('ajax.php?func=set_utm',{ utmx: x,utmy: y,zone: zone},function(data) {
+            data = JSON.parse(data);
+            document.getElementById('result_dezi').innerHTML = data.dezi;
+            document.getElementById('result_bogen').innerHTML = data.bogen;
+            document.getElementById('result_bogen_sek').innerHTML = data.bogen_sek;
+            document.getElementById('result_utm').innerHTML = data.utm;
+            document.getElementById('result_utmref').innerHTML = data.utmref;
+            document.getElementById('result_adresse').innerHTML = data.adresse;
+        });
+    }
+
 </script>
 <body>
 Testen der Geoconvert Klasse
-<br/>
-<br/>
-LAT: <input type="text" id="lat" value="53.53015"/>
-<br/>
-LNG: <input type="text" id="lng" value="8.12645"/>
-<button onclick="test()">TEST</button>
+
+<table>
+    <tr>
+        <td colspan="2">LAT, LNG</td>
+        <td colspan="2">UTM</td>
+    </tr>
+    <tr>
+        <td>LAT:</td>
+        <td><input type="text" id="lat" value="53.53021"/></td>
+        <td>Zone:</td>
+        <td><input type="text" id="utmzone" value="32U"/></td>
+    </tr>
+    <tr>
+        <td>LNG:</td>
+        <td><input type="text" id="lng" value="8.12645"/></td>
+        <td>X:</td>
+        <td><input type="text" id="utmx" value="442096"/></td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+        <td>Y:</td>
+        <td><input type="text" id="utmy" value="5931438"/></td>
+    </tr>
+    <tr>
+        <td colspan="2"><button onclick="latlng()">TEST LAT LNG</button></td>
+        <td colspan="2"><button onclick="utm()">TEST UTM</button></td>
+    </tr>
+</table>
+
 <hr/>
 <div id="result_adresse"></div>
 <h5>dd.dddd</h5>

@@ -45,6 +45,16 @@ class geoconvert {
         $this->geocoder->set_latlng_dezi($lat,$lng);
     }
 
+    public function set_utm($zone,$easting,$northing){
+        $this->utm->set_utm($zone,$easting,$northing);
+        $this->gps_dezi->set_latlng_dezi($this->utm->get_lat_grad(),$this->utm->get_lng_grad());
+        $this->gps_bogen->set_latlng_bogen_from_dezi($this->utm->get_lat_grad(),$this->utm->get_lng_grad());
+        $this->gps_bogen_sek->set_latlng_bogen_sek_from_dezi($this->utm->get_lat_grad(),$this->utm->get_lng_grad());
+        $this->utmref->set_latlng_dezi($this->utm->get_lat_grad(),$this->utm->get_lng_grad());
+        $this->geocoder->set_latlng_dezi($this->utm->get_lat_grad(),$this->utm->get_lng_grad());
+
+    }
+
     public function get_gps_dezi(){
         return $this->gps_dezi->get_lat_grad()." ".$this->gps_dezi->get_lng_grad();
     }
@@ -66,7 +76,7 @@ class geoconvert {
     }
 
     public function get_adresse(){
-        return $this->geocoder->get_addresse();
+        return  $this->geocoder->get_addresse();
     }
 
 
