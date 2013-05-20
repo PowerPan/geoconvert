@@ -7,6 +7,6 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class UTMREF {
-
+class UTMREF extends UTM{
+    private $zonefiled;
 }
