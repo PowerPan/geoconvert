@@ -7,6 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 include_once("GPS.php");
+include_once("GPSBogen.php");
+include_once("GPSBogenSek.php");
 include_once("UTM.php");
 include_once("UTMREF.php");
 
@@ -18,27 +20,33 @@ class geoconvert {
     private $gps_bogen_sek;
     private $utmref;
 
-    private $a = 6378137; //WGS84
-    private $e2 = 0.00669437999013;
+
 
     // N/S = Y-Achse
     // O/W = X-Achse
 
+    public function __construct(){
+        $this->gps_dezi = new GPS();
+        $this->gps_bogen = new GPSBogen();
+        $this->gps_bogen_sek = new GPSBogenSek();
+    }
+
     public function set_gps_dezi($lat,$lng){
-        $gps = new GPS();
-        $gps->set_latlng($lat,$lng);
+        $this->gps_dezi->set_latlng_dezi($lat,$lng);
+        $this->gps_bogen->set_latlng_bogen_from_dezi($lat,$lng);
+        $this->gps_bogen_sek->set_latlng_bogen_sek_from_dezi($lat,$lng);
     }
 
     public function get_gps_dezi(){
-        return $this->gps_dezi['x']." ".$this->gps_dezi['y'];
+        return $this->gps_dezi->get_lat_grad()." ".$this->gps_dezi->get_lng_grad();
     }
 
     public function get_gps_bogen(){
-        return $this->gps_bogen['x']['grad']."° ".$this->gps_bogen['x']['minute']."' ".$this->gps_bogen['y']['grad']."° ".$this->gps_bogen['y']['minute']."' ";
+        return $this->gps_bogen->get_lat_grad()."° ".$this->gps_bogen->get_lat_minute()."' ".$this->gps_bogen->get_lng_grad()."° ".$this->gps_bogen->get_lng_minute()."' ";
     }
 
     public function get_gps_bogen_sek(){
-        return $this->gps_bogen_sek['x']['grad']."° ".$this->gps_bogen_sek['x']['minute']."' ".$this->gps_bogen_sek['x']['sekunde']."'' ".$this->gps_bogen_sek['y']['grad']."° ".$this->gps_bogen_sek['y']['minute']."' ".$this->gps_bogen_sek['y']['sekunde']."'' ";
+        return $this->gps_bogen_sek->get_lat_grad()."° ".$this->gps_bogen_sek->get_lat_minute()."' ".$this->gps_bogen_sek->get_lat_sekunde()."'' ".$this->gps_bogen_sek->get_lng_grad()."° ".$this->gps_bogen_sek->get_lng_minute()."' ".$this->gps_bogen_sek->get_lng_sekunde()."'' ";
     }
 
     public function get_utm(){

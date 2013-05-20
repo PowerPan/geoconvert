@@ -5,14 +5,14 @@
     <ignored path="geoconvert.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368963509644" ignored="false" />
-    <file path="/geoconvert.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369000047320" ignored="false" />
+    <file path="/geoconvert.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369045289621" ignored="false" />
     <file path="/index.html" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368987290861" ignored="false" />
     <file path="/ajax.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368986742213" ignored="false" />
-    <file path="/GPS.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369039819851" ignored="false" />
+    <file path="/GPS.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369045125010" ignored="false" />
     <file path="/UTM.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368989849616" ignored="false" />
     <file path="/UTMREF.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368989888741" ignored="false" />
-    <file path="/GPSBogen.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369039733821" ignored="false" />
-    <file path="/GPSBogenSek.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369039365818" ignored="false" />
+    <file path="/GPSBogen.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369045081611" ignored="false" />
+    <file path="/GPSBogenSek.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369045108074" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +35,7 @@
       <file leaf-file-name="geoconvert.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geoconvert.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="36" selection-start="599" selection-end="599" vertical-scroll-proportion="-0.886076">
+            <state line="48" column="272" selection-start="1557" selection-end="1557" vertical-scroll-proportion="-3.9240506">
               <folding />
             </state>
           </provider>
@@ -44,16 +44,16 @@
       <file leaf-file-name="GPS.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GPS.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="50" selection-start="959" selection-end="959" vertical-scroll-proportion="-16.875">
+            <state line="22" column="32" selection-start="454" selection-end="454" vertical-scroll-proportion="-10.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GPSBogen.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GPSBogen.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GPSBogen.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="36" selection-start="979" selection-end="979" vertical-scroll-proportion="0.7120419">
+            <state line="32" column="4" selection-start="784" selection-end="936" vertical-scroll-proportion="-16.25">
               <folding />
             </state>
           </provider>
@@ -62,16 +62,16 @@
       <file leaf-file-name="GPSBogenSek.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GPSBogenSek.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="110" selection-start="299" selection-end="368" vertical-scroll-proportion="-2.0">
+            <state line="24" column="33" selection-start="693" selection-end="693" vertical-scroll-proportion="-11.25">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UTM.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="UTM.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UTM.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="5" selection-start="3516" selection-end="3516" vertical-scroll-proportion="-46.166668">
+            <state line="63" column="100" selection-start="2249" selection-end="2249" vertical-scroll-proportion="0.8839286">
               <folding />
             </state>
           </provider>
@@ -98,7 +98,7 @@
       <file leaf-file-name="ajax.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="47" selection-start="533" selection-end="533" vertical-scroll-proportion="-9.375">
+            <state line="17" column="38" selection-start="672" selection-end="672" vertical-scroll-proportion="-10.625">
               <folding />
             </state>
           </provider>
@@ -139,14 +139,14 @@
       <list>
         <option value="$PROJECT_DIR$/sourceidea" />
         <option value="$PROJECT_DIR$/../../xamppfiles/htdocs/swwv/karte/index.php" />
-        <option value="$PROJECT_DIR$/ajax.php" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/UTMREF.php" />
-        <option value="$PROJECT_DIR$/UTM.php" />
-        <option value="$PROJECT_DIR$/geoconvert.php" />
+        <option value="$PROJECT_DIR$/GPSBogen.php" />
         <option value="$PROJECT_DIR$/GPSBogenSek.php" />
         <option value="$PROJECT_DIR$/GPS.php" />
-        <option value="$PROJECT_DIR$/GPSBogen.php" />
+        <option value="$PROJECT_DIR$/geoconvert.php" />
+        <option value="$PROJECT_DIR$/ajax.php" />
+        <option value="$PROJECT_DIR$/UTM.php" />
       </list>
     </option>
   </component>
@@ -272,8 +272,8 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0121951215" sideWeight="0.99351704" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14181523" sideWeight="0.9878049" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16693678" sideWeight="0.9878049" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24554294" sideWeight="0.9878049" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16693678" sideWeight="0.9878049" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.67094016" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -377,13 +377,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="12" selection-start="1119" selection-end="1119" vertical-scroll-proportion="-6.835443">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UTMREF.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="23" selection-start="214" selection-end="214" vertical-scroll-proportion="-2.5">
@@ -391,44 +384,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UTM.php">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="5" selection-start="3516" selection-end="3516" vertical-scroll-proportion="-46.166668">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="47" selection-start="533" selection-end="533" vertical-scroll-proportion="-9.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GPSBogenSek.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="110" selection-start="299" selection-end="368" vertical-scroll-proportion="-2.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geoconvert.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="36" selection-start="599" selection-end="599" vertical-scroll-proportion="-0.886076">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GPS.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="50" selection-start="959" selection-end="959" vertical-scroll-proportion="-16.875">
+        <state line="36" column="12" selection-start="1119" selection-end="1119" vertical-scroll-proportion="-6.835443">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GPSBogen.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="36" selection-start="979" selection-end="979" vertical-scroll-proportion="0.7120419">
+        <state line="32" column="4" selection-start="784" selection-end="936" vertical-scroll-proportion="-16.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GPSBogenSek.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="33" selection-start="693" selection-end="693" vertical-scroll-proportion="-11.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GPS.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="32" selection-start="454" selection-end="454" vertical-scroll-proportion="-10.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geoconvert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="272" selection-start="1557" selection-end="1557" vertical-scroll-proportion="-3.9240506">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="38" selection-start="672" selection-end="672" vertical-scroll-proportion="-10.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UTM.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="100" selection-start="2249" selection-end="2249" vertical-scroll-proportion="0.8839286">
           <folding />
         </state>
       </provider>

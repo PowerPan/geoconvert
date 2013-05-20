@@ -21,8 +21,17 @@ class GPSBogenSek extends GPSBogen{
         $this->lng_sekunde = $lng_sekunde;
     }
 
+    public function get_lat_sekunde(){
+        return $this->lat_sekunde;
+    }
+
+    public function get_lng_sekunde(){
+        return $this->lng_sekunde;
+    }
+
     public function set_latlng_bogen_sek_from_bogen($lat_grad,$lat_minute,$lng_grad,$lng_minute){
-        $this->set_latlng_bogen_from_bogen($lat_grad,$lat_minute,$lng_grad,$lng_minute);
+        $this->set_latlng_bogen($lat_grad,$lat_minute,$lng_grad,$lng_minute);
+
         //Umrechnung von dd mm.mmm nach dd mm ss.s
         //X-Achse
         $komma = explode(".",$this->lat_minute);

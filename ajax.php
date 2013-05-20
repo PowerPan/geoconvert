@@ -15,7 +15,8 @@ switch($_GET['func']){
                                    ,"bogen":  "'.$geo->get_gps_bogen().'"
                                    ,"bogen_sek":  "'.$geo->get_gps_bogen_sek().'"
                                    ,"utm":  "'.$geo->get_utm().'"
-                                    }';
+                                   }';
+
                         echo $json;
                         break;
 }

@@ -30,7 +30,15 @@ class GPSBogen extends GPS{
         $this->lng_minute = $mm;
     }
 
-    public function set_latlang_bogen($lat_grad,$lat_minute,$lng_grad,$lng_minute){
+    public function get_lat_minute(){
+        return $this->lat_minute;
+    }
+
+    public function get_lng_minute(){
+        return $this->lng_minute;
+    }
+
+    public function set_latlng_bogen($lat_grad,$lat_minute,$lng_grad,$lng_minute){
         $this->lat_grad = $lat_grad;
         $this->lat_minute = $lat_minute;
 

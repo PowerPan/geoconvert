@@ -8,19 +8,19 @@
  */
 
 class GPS {
-    protected  $lat_grad;
+    protected $lat_grad;
     protected $lng_grad;
 
     public function set_latlng_dezi($lat,$lng){
-        $this->lat = $lat;
-        $this->lng = $lng;
+        $this->lat_grad = $lat;
+        $this->lng_grad = $lng;
     }
 
-    public function get_lat(){
+    public function get_lat_grad(){
         return $this->lat_grad;
     }
 
-    public function get_lng(){
+    public function get_lng_grad(){
         return $this->lng_grad;
     }
 
