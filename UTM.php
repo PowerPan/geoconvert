@@ -8,10 +8,10 @@
  */
 
 class UTM extends GPS{
-    private $zone;
-    private $easting;
-    private $northing;
-    private $bezugsmeridian;
+    protected  $zone;
+    protected $easting;
+    protected $northing;
+    protected $bezugsmeridian;
 
 
     private $a = 6378137; //WGS84
@@ -32,7 +32,6 @@ class UTM extends GPS{
 
     public function set_latlng_dezi($lat,$lng){
         parent::set_latlng_dezi($lat,$lng);
-        $this->find_zone();
         $this->calculate_from_dezi();
     }
 
@@ -98,13 +97,15 @@ class UTM extends GPS{
             -( (35*(pow($e2,3)/3072))*sin(6*$lat_rad))
         ));*/
 
-        $this->easting = intval($k0*$N*($A+(1-$T+$C)*$A*$A*$A/6 + (5-18*$T+$T*$T+72*$C-58*$E)*$A*$A*$A*$A*$A/120) + 500000.0);
-        $this->northing = intval($k0*($M+$N*tan($lat_rad)*($A*$A/2+(5-$T+9*$C+4*$C*$C)*$A*$A*$A*$A/24 + (61-58*$T+$T*$T+600*$C-330*$E)*$A*$A*$A*$A*$A*$A/720)));
-
-        /*$G1 = 13 * pow($C,2) + 4 * pow($C,3) - 64 * pow($C,2)*$T - 24 * pow($C,3) * $T;
+        $G1 = 13 * pow($C,2) + 4 * pow($C,3) - 64 * pow($C,2)*$T - 24 * pow($C,3) * $T;
         $G2 = (61 - 479 * $T + 179 * pow($T,2) - pow($T,3))*pow($A,7)/5040;
         $G3 = 445 * pow($C,2) + 324 * pow($C,3) - 680 * pow($C,2) * $T + 88 * pow($C,4) - 600 * pow($C,3) * $T - 192 * pow($C,4) * $T;
-        $G4 = (1385 - 3111 * $T + 543 * pow($T,2) - pow($T,3) ) * pow($A,8) / 40320;*/
+        $G4 = (1385 - 3111 * $T + 543 * pow($T,2) - pow($T,3) ) * pow($A,8) / 40320;
+
+        $this->easting = intval($k0*$N*($A+(1-$T+$C)*$A*$A*$A/6 + (5-18*$T+$T*$T+72*$C-58*$E + $G1)*$A*$A*$A*$A*$A/120 + $G2) + 500000.0);
+        $this->northing = intval($k0*($M+$N*tan($lat_rad)*($A*$A/2+(5-$T+9*$C+4*$C*$C)*$A*$A*$A*$A/24 + (61-58*$T+$T*$T+600*$C-330*$E + $G3)*$A*$A*$A*$A*$A*$A/720))+$G4);
+
+
 
 
         //$this->easting = $ko * $N * ( $A + (1 - $T + $C) * pow($A,3)/6 + (5 - 18 * $T + pow($T,2) + 72 * $C - 58 * $E + $G1 ) * pow($A,5)/120 + $G2 );

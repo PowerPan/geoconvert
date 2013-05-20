@@ -30,6 +30,7 @@ class geoconvert {
         $this->gps_bogen = new GPSBogen();
         $this->gps_bogen_sek = new GPSBogenSek();
         $this->utm = new UTM();
+        $this->utmref = new UTMREF();
     }
 
     public function set_gps_dezi($lat,$lng){
@@ -37,6 +38,7 @@ class geoconvert {
         $this->gps_bogen->set_latlng_bogen_from_dezi($lat,$lng);
         $this->gps_bogen_sek->set_latlng_bogen_sek_from_dezi($lat,$lng);
         $this->utm->set_latlng_dezi($lat,$lng);
+        $this->utmref->set_latlng_dezi($lat,$lng);
     }
 
     public function get_gps_dezi(){
@@ -53,6 +55,10 @@ class geoconvert {
 
     public function get_utm(){
         return $this->utm->get_zone()." ".$this->utm->get_easting()." ".$this->utm->get_northing();
+    }
+
+    public function get_utmref(){
+        return $this->utmref->get_zone()." ".$this->utmref->get_zonenfeld()." ".$this->utmref->get_easting()." ".$this->utmref->get_northing();
     }
 
 
