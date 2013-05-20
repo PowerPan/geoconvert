@@ -75,15 +75,16 @@ class UTM extends GPS{
         $this->find_zone();
         $this->find_bezugsmeridian();
         $lat_rad = $this->DegToRad($this->lat_grad);
+        $lng_rad = $this->DegToRad($this->lng_grad);
 
         $e2 = pow(sqrt(pow($this->a,2)-pow($this->b,2))/$this->b,2);
 
         $k0 = 0.9996;
-        $E = pow($e2,2)/(1-pow($e2,2));
-        $N = $this->a / sqrt($e2*sin($lat_rad)*sin($lat_rad));
+        $E = $e2/(1-$e2);
+        $N = $this->a / sqrt(1-$e2*sin($lat_rad)*sin($lat_rad));
         $T = pow(tan($lat_rad),2);
         $C = $E * pow(cos($lat_rad),2);
-        $A = $this->DegToRad(($lat_rad-$this->DegToRad($this->bezugsmeridian))) * cos($lat_rad);
+        $A = cos($lat_rad) * ($lng_rad - $this->DegToRad($this->bezugsmeridian) );
 
         $M = $this->a*((1	- $e2/4		- 3*$e2*$e2/64	- 5*$e2*$e2*$e2/256)*$lat_rad
             - (3*$e2/8	+ 3*$e2*$e2/32	+ 45*$e2*$e2*$e2/1024)*sin(2*$lat_rad)
@@ -97,8 +98,8 @@ class UTM extends GPS{
             -( (35*(pow($e2,3)/3072))*sin(6*$lat_rad))
         ));*/
 
-        $this->easting = ($k0*$N*($A+(1-$T+$C)*$A*$A*$A/6 + (5-18*$T+$T*$T+72*$C-58*$E)*$A*$A*$A*$A*$A/120) + 500000.0);
-        $this->northing = ($k0*($M+$N*tan($lat_rad)*($A*$A/2+(5-$T+9*$C+4*$C*$C)*$A*$A*$A*$A/24 + (61-58*$T+$T*$T+600*$C-330*$E)*$A*$A*$A*$A*$A*$A/720)));
+        $this->easting = intval($k0*$N*($A+(1-$T+$C)*$A*$A*$A/6 + (5-18*$T+$T*$T+72*$C-58*$E)*$A*$A*$A*$A*$A/120) + 500000.0);
+        $this->northing = intval($k0*($M+$N*tan($lat_rad)*($A*$A/2+(5-$T+9*$C+4*$C*$C)*$A*$A*$A*$A/24 + (61-58*$T+$T*$T+600*$C-330*$E)*$A*$A*$A*$A*$A*$A/720)));
 
         /*$G1 = 13 * pow($C,2) + 4 * pow($C,3) - 64 * pow($C,2)*$T - 24 * pow($C,3) * $T;
         $G2 = (61 - 479 * $T + 179 * pow($T,2) - pow($T,3))*pow($A,7)/5040;
@@ -111,7 +112,7 @@ class UTM extends GPS{
     }
 
     private function find_bezugsmeridian(){
-        $this->bezugsmeridian = (-183.0 + ($this->zone * 6.0));
+        $this->bezugsmeridian = ($this->zone - 1)*6 - 180 + 3;
     }
 
     private function DegToRad($deg){

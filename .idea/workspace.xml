@@ -9,7 +9,7 @@
     <file path="/index.html" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368987290861" ignored="false" />
     <file path="/ajax.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368986742213" ignored="false" />
     <file path="/GPS.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369045125010" ignored="false" />
-    <file path="/UTM.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369049439684" ignored="false" />
+    <file path="/UTM.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369055966160" ignored="false" />
     <file path="/UTMREF.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1368989888741" ignored="false" />
     <file path="/GPSBogen.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369045081611" ignored="false" />
     <file path="/GPSBogenSek.php" changelist="51518f66-55cf-4c8b-ba65-f4fa909869a9" time="1369045108074" ignored="false" />
@@ -71,7 +71,7 @@
       <file leaf-file-name="UTM.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UTM.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="18" selection-start="2250" selection-end="2250" vertical-scroll-proportion="0.26732674">
+            <state line="83" column="31" selection-start="2434" selection-end="2434" vertical-scroll-proportion="0.32673267">
               <folding>
                 <element signature="e#6#163#0" expanded="true" />
               </folding>
@@ -430,7 +430,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UTM.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="18" selection-start="2250" selection-end="2250" vertical-scroll-proportion="0.26732674">
+        <state line="83" column="31" selection-start="2434" selection-end="2434" vertical-scroll-proportion="0.32673267">
           <folding>
             <element signature="e#6#163#0" expanded="true" />
           </folding>
