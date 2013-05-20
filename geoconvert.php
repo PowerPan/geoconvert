@@ -11,6 +11,7 @@ include_once("GPSBogen.php");
 include_once("GPSBogenSek.php");
 include_once("UTM.php");
 include_once("UTMREF.php");
+include_once("Geocoder.php");
 
 class geoconvert {
 
@@ -19,6 +20,7 @@ class geoconvert {
     private $gps_bogen;
     private $gps_bogen_sek;
     private $utmref;
+    private $geocoder;
 
 
 
@@ -31,6 +33,7 @@ class geoconvert {
         $this->gps_bogen_sek = new GPSBogenSek();
         $this->utm = new UTM();
         $this->utmref = new UTMREF();
+        $this->geocoder = new Geocoder();
     }
 
     public function set_gps_dezi($lat,$lng){
@@ -39,6 +42,7 @@ class geoconvert {
         $this->gps_bogen_sek->set_latlng_bogen_sek_from_dezi($lat,$lng);
         $this->utm->set_latlng_dezi($lat,$lng);
         $this->utmref->set_latlng_dezi($lat,$lng);
+        $this->geocoder->set_latlng_dezi($lat,$lng);
     }
 
     public function get_gps_dezi(){
@@ -59,6 +63,10 @@ class geoconvert {
 
     public function get_utmref(){
         return $this->utmref->get_zone()." ".$this->utmref->get_zonenfeld()." ".$this->utmref->get_easting()." ".$this->utmref->get_northing();
+    }
+
+    public function get_adresse(){
+        return $this->geocoder->get_addresse();
     }
 
 

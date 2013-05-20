@@ -16,6 +16,7 @@
             document.getElementById('result_bogen_sek').innerHTML = data.bogen_sek;
             document.getElementById('result_utm').innerHTML = data.utm;
             document.getElementById('result_utmref').innerHTML = data.utmref;
+            document.getElementById('result_adresse').innerHTML = data.adresse;
         });
     }
 
@@ -29,6 +30,7 @@ LAT: <input type="text" id="lat" value="53.53015"/>
 LNG: <input type="text" id="lng" value="8.12645"/>
 <button onclick="test()">TEST</button>
 <hr/>
+<div id="result_adresse"></div>
 <h5>dd.dddd</h5>
 <div id="result_dezi"></div>
 <h5>dd mm.mmm</h5>
