@@ -36,7 +36,7 @@ class UTM extends GPS{
     }
 
     public function set_utm($zone,$easting,$northing){
-        $this->$zone = $zone;
+        $this->zone = $zone;
         $this->easting = $easting;
         $this->northing = $northing;
         $this->calculate_to_dezi();
@@ -77,6 +77,9 @@ class UTM extends GPS{
         //http://www.mydarc.de/dh2mic/files/utm.pdf
         //http://www.gpsy.com/gpsinfo/geotoutm/gantz/LatLong-UTMconversion.cpp.txt
 
+
+
+
         //Berechung von UTM Zone und Berzugsmeridian
         $this->find_zone();
         $this->find_bezugsmeridian();
@@ -111,6 +114,7 @@ class UTM extends GPS{
 
         $this->easting = intval($k0*$N*($A+(1-$T+$C)*$A*$A*$A/6 + (5-18*$T+$T*$T+72*$C-58*$E + $G1)*$A*$A*$A*$A*$A/120 + $G2) + 500000.0);
         $this->northing = intval($k0*($M+$N*tan($lat_rad)*($A*$A/2+(5-$T+9*$C+4*$C*$C)*$A*$A*$A*$A/24 + (61-58*$T+$T*$T+600*$C-330*$E + $G3)*$A*$A*$A*$A*$A*$A/720))+$G4);
+
     }
 
     private function find_bezugsmeridian(){
@@ -118,7 +122,89 @@ class UTM extends GPS{
     }
 
     private function calculate_to_dezi(){
+        //http://www.helmutheimeier.privat.t-online.de/kt/phpscripts.html
 
+
+
+        $band = substr($this->zone,2,1);
+        $z1 = intval(substr($this->zone,0,2));
+        $ew1 = intval($this->easting);
+        $nw1 = intval($this->northing);
+
+        //WGS 84 Datum
+        //Große Halbachse a und Abplattung f
+        $a = 6378137.000;
+        $f = 3.35281068e-3;
+
+        //Polkrümmungshalbmesser c
+        $c = $a/(1-$f);
+
+        //Quadrat der zweiten numerischen Exzentrizität
+        $ex2 = (2*$f-$f*$f)/((1-$f)*(1-$f));
+        $ex4 = $ex2*$ex2;
+        $ex6 = $ex4*$ex2;
+        $ex8 = $ex4*$ex4;
+
+        //Koeffizienten zur Berechnung der geographischen Breite aus gegebener
+        //Meridianbogenlänge
+        $e0 = $c*(pi()/180)*(1 - 3*$ex2/4 + 45*$ex4/64 - 175*$ex6/256 + 11025*$ex8/16384);
+        $f2 =    (180/pi())*(    3*$ex2/8 - 3*$ex4/16  + 213*$ex6/2048 -  255*$ex8/4096);
+        $f4 =               (180/pi())*(   21*$ex4/256 -  21*$ex6/256  +  533*$ex8/8192);
+        $f6 =                             (180/pi())*(   151*$ex6/6144 -  453*$ex8/12288);
+
+        //Entscheidung Nord-/Süd Halbkugel
+        if ($band >= "N"|| $band == "")
+            $m_nw = $nw1;
+        else
+            $m_nw = $nw1 - 10e6;
+
+        //Geographische Breite bf zur Meridianbogenlänge gf = m_nw
+        $sigma = ($m_nw/0.9996)/$e0;
+        $sigmr = $sigma*pi()/180;
+        $bf = $sigma + $f2*sin(2*$sigmr) + $f4*sin(4*$sigmr) + $f6*sin(6*$sigmr);
+
+        //Breite bf in Radianten
+        $br = $bf * pi()/180;
+        $tan1 = tan($br);
+        $tan2 = $tan1*$tan1;
+        $tan4 = $tan2*$tan2;
+
+        $cos1 = cos($br);
+        $cos2 = $cos1*$cos1;
+
+        $etasq = $ex2*$cos2;
+
+        //Querkrümmungshalbmesser nd
+        $nd = $c/sqrt(1 + $etasq);
+        $nd2 = $nd*$nd;
+        $nd4 = $nd2*$nd2;
+        $nd6 = $nd4*$nd2;
+        $nd3 = $nd2*$nd;
+        $nd5 = $nd4*$nd;
+
+        //Längendifferenz dl zum Bezugsmeridian lh
+        $lh = ($z1 - 30)*6 - 3;
+        $dy = ($ew1-500000)/0.9996;
+        $dy2 = $dy*$dy;
+        $dy4 = $dy2*$dy2;
+        $dy3 = $dy2*$dy;
+        $dy5 = $dy2*$dy3;
+        $dy6 = $dy3*$dy3;
+
+        $b2 = - $tan1*(1+$etasq)/(2*$nd2);
+        $b4 =   $tan1*(5+3*$tan2+6*$etasq*(1-$tan2))/(24*$nd4);
+        $b6 = - $tan1*(61+90*$tan2+45*$tan4)/(720*$nd6);
+
+        $l1 =   1/($nd*$cos1);
+        $l3 = - (1+2*$tan2+$etasq)/(6*$nd3*$cos1);
+        $l5 =   (5+28*$tan2+24*$tan4)/(120*$nd5*$cos1);
+
+        //Geographische Breite bw und Länge lw als Funktion von Ostwert ew
+        // und Nordwert nw
+        $lat = $bf + (180/pi()) * ($b2*$dy2 + $b4*$dy4 + $b6*$dy6);
+        $lng = $lh + (180/pi()) * ($l1*$dy  + $l3*$dy3 + $l5*$dy5);
+
+        /*
         $this->find_bezugsmeridian();
 
         $k0 = 0.9996;
@@ -179,7 +265,7 @@ class UTM extends GPS{
         $lat = $phi1 - ( $N1/($R1*tan($phi1))) * ( pow($D,2)/2 - ( 5 + 3 * $T1 + 10 * $C1 - 4 * pow($C1,2) - 9 * $E ) * pow($D,4)/24 + ( 61 + 90 * $T1 + 298 * $C1 + 45 * pow($T1,2) -252 * $E - 3 * pow($C1,2) + $G5) * pow($D,6)/720 + $G6   );
         $lng = ( $D - ( 1 + 2 * $T1 + $C1 )/(6*pow($D,3))  +  ( 5 - 2 * $C1 + 28 * $T1 - 3 * pow($C1,2) + 8 * $E + 24 * pow($T1,2) + $G7  ) * pow($D,5)/120 + $G8  )/ cos($phi1);
         */
-        $this->set_latlng_dezi($this->RadToDeg($lat),$this->RadToDeg($lng));
+        $this->set_latlng_dezi($lat,$lng);
 
     }
 
