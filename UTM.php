@@ -95,18 +95,11 @@ class UTM extends GPS{
         $C = $E * pow(cos($lat_rad),2);
         $A = cos($lat_rad) * ($lng_rad - $this->DegToRad($this->bezugsmeridian) );
 
-        $M = $this->a*((1	- $e2/4		- 3*$e2*$e2/64	- 5*$e2*$e2*$e2/256)*$lat_rad
-            - (3*$e2/8	+ 3*$e2*$e2/32	+ 45*$e2*$e2*$e2/1024)*sin(2*$lat_rad)
-            + (15*$e2*$e2/256 + 45*$e2*$e2*$e2/1024)*sin(4*$lat_rad)
-            - (35*$e2*$e2*$e2/3072)*sin(6*$lat_rad));
+        $M = $this->a*((1	- $e2/4		- 3*pow($e2,2)/64	- 5*pow($e2,3)/256)*$lat_rad
+            - (3*$e2/8	+ 3*pow($e2,2)/32	+ 45*pow($e2,3)/1024)*sin(2*$lat_rad)
+            + (15*pow($e2,2)/256 + 45*pow($e2,3)/1024)*sin(4*$lat_rad)
+            - (35*pow($e2,3)/3072)*sin(6*$lat_rad));
         
-        // Die Reihe hab ich noch nicht durchblickt und daher stumpf abgechrieben JJR 19.05.2013
-        /*$M = $this->a * (   ((1- (pow($e2,1)/4) - 3*(pow($e2,2)/64) - 5*(pow($e2,3)/256))*$lat_rad
-            -( (3*(pow($e2,1)/8) + 3*(pow($e2,2)/32) + 45*(pow($e2,3)/1024))*sin(2*$lat_rad))
-            +( (15*(pow($e2,2)/256) + 45*(pow($e2,3)/1024))*sin(4*$lat_rad) )
-            -( (35*(pow($e2,3)/3072))*sin(6*$lat_rad))
-        ));*/
-
         $G1 = 13 * pow($C,2) + 4 * pow($C,3) - 64 * pow($C,2)*$T - 24 * pow($C,3) * $T;
         $G2 = (61 - 479 * $T + 179 * pow($T,2) - pow($T,3))*pow($A,7)/5040;
         $G3 = 445 * pow($C,2) + 324 * pow($C,3) - 680 * pow($C,2) * $T + 88 * pow($C,4) - 600 * pow($C,3) * $T - 192 * pow($C,4) * $T;
